@@ -95,8 +95,9 @@ const getEventsByState = async (state: string) => {
 
 const getHistory = async () => {
   try {
-    //TODO: update this function to fetch all previously searched states. Return the resulting array of states.
-    console.log('complete the `getHistory` function in cilent/src/main.ts');
+    const response = await fetch('/api/history');
+    const history = await response.json();
+    return history;
   } catch (err) {
     console.log('Error:', err);
     return err;
