@@ -54,10 +54,9 @@ API Calls
 // * Function to get parks by state
 const getParksByState = async (state: string) => {
   try {
-    //TODO: update this function to take in the name of a state and fetch all national parks in that state.  Return the resulting array of parks.
-    console.log(
-      'complete the `getParksByState` function in cilent/src/main.ts'
-    );
+    const response = await fetch(`/api/parks/${state}`);
+    const parks = await response.json();
+    return parks;
   } catch (err) {
     console.log('Error:', err);
     return err;
