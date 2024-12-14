@@ -66,9 +66,16 @@ const getParksByState = async (state: string) => {
 //*Function to delete state from history
 const deledStateFromHistory = async (id: string) => {
   //TODO: update this function to take in the id of a saved state and delete that state from search history.
-  console.log(
-    'complete the `deleteStateFromHistory` function in cilent/src/main.ts'
-  );
+  try {
+    const response = await fetch(`/api/history/${id}`, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log('Error:', err);
+    return err;
+  }
 };
 
 // * Function to get future events by state
